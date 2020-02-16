@@ -15,13 +15,21 @@ export class MovieListComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit() {
-    debugger;
+  ngOnInit() {    
     this.activatedRoute.queryParams.subscribe(qparams => {
       let q = qparams["q"];
       this.service
         .fetchSearched(q)
         .subscribe(resp => (this.movies = resp.Search));
     });
+  }
+
+  posterImage(poster:string) {
+
+    if(poster === "N/A") {
+      return 'https://www.prokerala.com/movies/assets/img/no-poster-available.jpg'
+    }else{
+      return poster
+    }
   }
 }
