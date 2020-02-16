@@ -8,11 +8,12 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderComponent implements OnInit {
+ 
   queryTerm: string;
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+  }
   onSubmitHandler(event :any) {
     event.preventDefault();
     this.router.navigate(["/movies"], {queryParams : {q:this.queryTerm}});

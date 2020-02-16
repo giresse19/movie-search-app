@@ -1,0 +1,15 @@
+.text-search{ 
+        height: 450px;
+        line-height: 450px;
+        text-align: center;        
+}
+
+.text-search>span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    color: aquamarine;
+    font-size: large;
+    font-weight: bold;
+    font-family: sans-serif;
+  }

@@ -25,7 +25,6 @@ export class MovieListComponent implements OnInit {
   }
 
   posterImage(poster:string) {
-
     if(poster === "N/A") {
       return 'https://www.prokerala.com/movies/assets/img/no-poster-available.jpg'
     }else{
