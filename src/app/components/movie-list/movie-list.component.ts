@@ -1,18 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { MoviesService } from "src/app/services/movies.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-movie-list',
-  templateUrl: './movie-list.component.html',
-  styleUrls: ['./movie-list.component.css']
+  selector: "app-movie-list",
+  templateUrl: "./movie-list.component.html",
+  styleUrls: ["./movie-list.component.css"]
 })
 export class MovieListComponent implements OnInit {
+  movies: any[];
 
-private movies: any[];
+  constructor(
+    private service: MoviesService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-    
+  ngOnInit() {
+    debugger;
+    this.activatedRoute.queryParams.subscribe(qparams => {
+      let q = qparams["q"];
+      this.service
+        .fetchSearched(q)
+        .subscribe(resp => (this.movies = resp.Search));
+    });
   }
-
 }
