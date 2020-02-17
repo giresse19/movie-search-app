@@ -1,0 +1,71 @@
+<div *ngIf="!movie" class="text-center">
+    <img src="/assets/images/animated-loading-icon-23.jpg" alt="loading...">
+</div>
+<div class="row" *ngIf="movie">    
+    <div 
+        class="col-md-4 poster"
+        style.background-image="url({{posterImage(movie.Poster)}})"
+         >        
+    </div>
+    <div class="col-md-8">
+        <h3 
+        class="card-title" 
+        >
+            {{ movie.Title }}
+        </h3> 
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Released</td>
+                    <td>{{ movie.Released}}</td>
+                </tr>
+                <tr>
+                    <td>Runtime</td>
+                    <td>{{ movie.Runtime}}</td>
+                </tr>
+                <tr>
+                    <td>Genre</td>
+                    <td>{{ movie.Genre}}</td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>{{ movie.Country}}</td>
+                </tr>
+                <tr>
+                    <td>Plot</td>
+                    <td>{{ movie.Plot}}</td>
+                </tr>
+                <tr>
+                    <td>Language</td>
+                    <td>{{ movie.Language}}</td>
+                </tr>
+                <tr>
+                    <td>Director</td>
+                    <td>{{ movie.Director}}</td>
+                </tr>
+                <tr>
+                    <td>imdbRating</td>
+                    <td>{{ movie.imdbRating}}</td>
+                </tr>
+                <tr>
+                    <td>Actors</td>
+                    <td>{{ movie.Actors}}</td>
+                </tr>
+                <tr>
+                    <td>Awards</td>
+                    <td>{{ movie.Awards}}</td>
+                </tr>
+                <tr>
+                    <td>Writer</td>
+                    <td>{{ movie.Writer}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="col-md-1">
+            <button (click)="goBack()"      
+            class="btn btn-primary">
+             Back
+            </button>
+        </div>
+    </div>
+</div>
