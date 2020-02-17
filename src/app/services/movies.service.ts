@@ -10,12 +10,12 @@ import {environment} from 'src/environments/environment';
 export class MoviesService {
   constructor(private http: HttpClient) {}
 
-  fetchSearched(searchTerm: string): Observable<any> {
+  fetchSearched(searchTerm: string, page: number = 1): Observable<any> {
     return this.http.get(`${environment.omdbapi.apiUrl}`, {
       params: new HttpParams()
         .set("apikey", environment.omdbapi.apiKey)
         .set("s", searchTerm)
-      //  .set('page', page.toString())
+        .set('page', page.toString())
     });
   }
 }

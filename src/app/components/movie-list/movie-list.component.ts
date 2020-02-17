@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MoviesService } from "src/app/services/movies.service";
 import { ActivatedRoute } from "@angular/router";
 
+
 @Component({
   selector: "app-movie-list",
   templateUrl: "./movie-list.component.html",
@@ -20,7 +21,7 @@ export class MovieListComponent implements OnInit {
       let q = qparams["q"];
       this.service
         .fetchSearched(q)
-        .subscribe(resp => (this.movies = resp.Search));
+        .subscribe(res => (this.movies = res.Search));
     });
   }
 
