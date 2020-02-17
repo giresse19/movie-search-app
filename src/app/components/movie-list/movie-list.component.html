@@ -1,3 +1,6 @@
+<div class="text-center text-warning" *ngIf="!movies">
+No movie(s) found with that title, please check the title and try again!
+</div>
 <div class="row">
     <div class="card border-0 col-md-4 col-sm-6 col-xs-12" *ngFor="let m of movies">
         <div class="app-clickable">

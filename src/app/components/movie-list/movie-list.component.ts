@@ -7,25 +7,32 @@ import { ActivatedRoute } from "@angular/router";
   templateUrl: "./movie-list.component.html",
   styleUrls: ["./movie-list.component.css"]
 })
-
 export class MovieListComponent implements OnInit {
   movies: any[];
+  response: boolean;
 
   constructor(
     private service: MoviesService,
     private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit() {    
+  ngOnInit() {
     this.activatedRoute.queryParams.subscribe(qparams => {
       let q = qparams["q"];
-      this.service
-        .fetchSearched(q)
-        .subscribe(res => (this.movies = res.Search));
+      this.service.fetchSearched(q).subscribe(res => {
+        this.checkResponse(res);
+        this.movies = res.Search;
+      });
     });
   }
 
-   posterImage(poster:string) {
-    return this.service.poster(poster)
+  private checkResponse(res: any) {
+    if (res.Response) {
+      return (this.movies = []);
+    }
+  }
+
+  posterImage(poster: string) {
+    return this.service.poster(poster);
   }
 }
