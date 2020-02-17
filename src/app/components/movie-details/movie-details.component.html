@@ -9,7 +9,7 @@
         style.background-image="url({{posterImage(movie.Poster)}})"
          >        
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <h3 
         class="card-title app-clickable" 
         >
@@ -49,6 +49,13 @@
                     <td>imdbRating</td>
                     <td>{{ movie.imdbRating}}</td>
                 </tr>
+                <tr >
+                    <td>Ratings</td>                    
+                        <td *ngFor="let r of movie.Ratings">
+                            {{ r.Source}}
+                            {{ r.Value}}
+                        </td>                      
+                 </tr>
                 <tr>
                     <td>Actors</td>
                     <td>{{ movie.Actors}}</td>
