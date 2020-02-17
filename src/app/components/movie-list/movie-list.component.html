@@ -1,34 +1,38 @@
-<div class="text-center text-warning" *ngIf="!movies && !response">
-    <img src="/assets/images/animated-loading-icon-23.jpg" alt="loading...">
-</div>
-<div class="text-center text-warning" *ngIf="response?.Error">
-    404! Page not found. <br>
-    No movie(s) found with that title from our database, please try a different title!
-</div>
-<div class="row" *ngIf="response?.Response">
-    <div class="card border-0 col-md-4 col-sm-6 col-xs-12" *ngFor="let m of movies">
-        <div class="app-clickable">
-            <div
-             class="card-body"
-             [routerLink]="['/movie-details', m.imdbID]"
-             >             
-                <div 
-                class="poster"
-                style.background-image="url({{posterImage(m.Poster)}})" >
-                </div>                  
-                <h5 
-                class="card-title" 
-                
-                >
-                    {{ m.Title }}
-                    <br>
-                    ({{ m.Year }})
-                </h5>              
-            </div
-            >
-        </div>
-        </div>
+
+<div class="row" >
+    <div class="text-center text-warning col-md-6 col-sm-8 col-xs-12" *ngIf="!movies && !response">
+        <img src="/assets/images/animated-loading-icon-23.jpg" alt="loading...">
     </div>
+    <div class="text-center text-warning page-not-found col-md-4 col-sm-6 col-xs-12" *ngIf="response?.Error">
+        <span>404! Page not found.<br>
+            No movie(s) found with the title entered from our database,
+             please try a different title!
+        </span>
+    </div>
+    <div class="card border-0 col-md-4 col-sm-6 col-xs-12" *ngIf="response?.Response" >
+        <div *ngFor="let m of movies">
+            <div class="app-clickable">
+                <div
+                 class="card-body"
+                 [routerLink]="['/movie-details', m.imdbID]"
+                 >            
+                    <div 
+                    class="poster"
+                    style.background-image="url({{posterImage(m.Poster)}})" >
+                    </div>                  
+                    <h5 
+                    class="card-title"                     
+                    >
+                        {{ m.Title }}
+                        <br>
+                        ({{ m.Year }})
+                    </h5>              
+                </div
+                >
+            </div>
+            </div>
+    </div>
+</div>
 
 
 

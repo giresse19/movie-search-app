@@ -9,8 +9,8 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class MovieListComponent implements OnInit {
   movies: any[];
-  response: any;
- 
+  response: any; 
+  
   constructor(
     private service: MoviesService,
     private activatedRoute: ActivatedRoute
