@@ -4,3 +4,14 @@
 .app-clickable {
     cursor: pointer;
 }
+.poster {
+    border-radius: 15px 15px 0 0;
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+}
+.card-title{
+    padding: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
