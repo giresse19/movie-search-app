@@ -2,6 +2,10 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import {  
+  PagedMovies,
+  MovieDetail
+} from './models';
 
 @Injectable({
   providedIn: "root"
@@ -9,8 +13,8 @@ import { environment } from "src/environments/environment";
 export class MoviesService {
   constructor(private http: HttpClient) {}
 
-  fetchSearched(searchTerm: string, page: number = 1): Observable<any> {
-    return this.http.get(`${environment.omdbapi.apiUrl}`, {
+  fetchSearched(searchTerm: string, page: number = 1): Observable<PagedMovies> {
+    return this.http.get<PagedMovies>(`${environment.omdbapi.apiUrl}`, {
       params: new HttpParams()
         .set("apikey", environment.omdbapi.apiKey)
         .set("s", this.handleSpecialCharsHtml(searchTerm))
@@ -18,8 +22,8 @@ export class MoviesService {
     });
   }
 
-  getMovieDetails(imdbID: string, page: number = 1): Observable<any> {
-    return this.http.get(`${environment.omdbapi.apiUrl}`, {
+  getMovieDetails(imdbID: string, page: number = 1): Observable<MovieDetail> {
+    return this.http.get<MovieDetail>(`${environment.omdbapi.apiUrl}`, {
       params: new HttpParams()
         .set("apikey", environment.omdbapi.apiKey)
         .set("i", imdbID)

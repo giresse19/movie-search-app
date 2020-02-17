@@ -11,6 +11,7 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { environment } from '../environments/environment';
     HomepageComponent,
     HeaderComponent,
     MovieListComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
