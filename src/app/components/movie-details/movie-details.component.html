@@ -1,8 +1,10 @@
-
-<div class="row" >   
-    <div *ngIf="!movie" class="col-md-4 col-sm-6 col-xs-12 text-center">
-        <img src="/assets/images/animated-loading-icon-23.jpg" alt="loading...">
-    </div>
+<div *ngIf="!movie" class="text-center">
+    <img 
+    src="https://gifimage.net/wp-content/uploads/2018/11/loader-small-gif-2.gif"    
+     alt="loading..."
+     >    
+</div>
+<div class="row" > 
     <div *ngIf="movie">
         <div 
         class="col-md-4 poster"
@@ -71,9 +73,9 @@
             </tbody>
         </table>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1">
         <button (click)="goBack()"      
-        class="btn btn-primary">
+        class="btn btn-primary backButton">
          Back
         </button>
     </div>
