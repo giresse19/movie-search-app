@@ -4,6 +4,23 @@
          Please try a different title.
     </span>
 </div>
+<div class="row" *ngIf="movies?.length === 0">
+    <div class="col-md-4"></div>
+    <div class="text-search col-md-4">
+      <span>
+        Welcome to search movie App! <br>Search for movies by title 
+        to get the collection of queried movies.
+        You can also click on particular movie to 
+        view the details of that movie.
+    </span > 
+        <span class="developer">
+          <p>Developed by <a href="https://github.com/giresse19?tab=repositories">Giresse Ashu-Bob</a></p>
+          <p>&copy; 02-2020 All rights reserve.</p>
+        </span>      
+    </div>
+    <div class="col-md-4">           
+    </div>
+</div>
 <div class="row" *ngIf="response?.Response">    
     <pagination 
     [total-items]="totalItem"

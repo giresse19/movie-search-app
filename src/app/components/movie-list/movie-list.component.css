@@ -4,7 +4,21 @@
     margin-bottom: 2em;
     border-radius: 15px;
 }
-.page-not-found>span{
-    /* line-height: 300px; */
+.text-search{      
+    line-height: 450px;
+    text-align: center;        
+}
+
+.text-search>span {
+display: inline-block;
+vertical-align: middle;
+line-height: normal;
+color: slategrey;
+font-size: larger;
+font-weight: bold; 
+}
+
+.developer{       
+    bottom: 0;
 }
 

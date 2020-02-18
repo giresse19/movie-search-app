@@ -11,10 +11,6 @@ const routes: Routes = [
     redirectTo: "movies"
   },
   {
-    path: "home",
-    component: HomepageComponent
-  },
-  {
     path: "movies",
     component: MovieListComponent
   },

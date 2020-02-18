@@ -15,8 +15,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmitHandler(event: any) {
-    event.preventDefault();
-    debugger
+    event.preventDefault();   
     this.movieService.searchTermChanged.next(this.queryTerm)
   }
 }
