@@ -1,0 +1,17 @@
+<nav >
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="previous()" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li>
+        <a class="page-link">{{ currentPage }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === lastPage ">
+        <a class="page-link" (click)="next()" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>

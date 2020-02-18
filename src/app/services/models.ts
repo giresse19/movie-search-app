@@ -15,29 +15,16 @@ export interface Movie {
 
   export interface MovieDetail {
     Title: string;
-    Rated: string;
-    Year: string
-    Director: string;
-    Genre:string;
-    Writer: string;
-    Actors: string;
-    Plot: string; 
-    Released: string;
-    Runtime: string;
-    Country:string;
-    Language: string;
-    Awards: string;
-    Ratings: Rating[];
-    imdbRating: string; 
-    imdbID: string;
-    BoxOffice: string; 
+    Year: string;
     Type: string;
     Poster: string;
-  }
-
-  export interface Rating {
-    Source: string;
-    Value: string;
+    Plot: string; 
+    imdbRating: string; 
+    Runtime: string;   
+    Genre:string;  
+    Country:string;
+    Language: string;   
+    imdbID: string;
   }
 
   export interface NotFound {

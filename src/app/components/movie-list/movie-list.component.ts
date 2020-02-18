@@ -1,30 +1,83 @@
 import { Component, OnInit } from "@angular/core";
 import { MoviesService } from "src/app/services/movies.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Movie, NotFound } from "../../services/models";
+import { PaginationComponent } from "../pagination/pagination.component";
 
+const searchTermParamName = "s";
+const pageParamName = "page";
 @Component({
   selector: "app-movie-list",
   templateUrl: "./movie-list.component.html",
   styleUrls: ["./movie-list.component.css"]
 })
 export class MovieListComponent implements OnInit {
-  movies: Movie[];
+  movies: Movie[] = [];
   response: NotFound;
+  page: number = 1;
+  totalItem: number;
+  searchTerm: string;
 
   constructor(
     private service: MoviesService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(qparams => {
-      let q = qparams["q"];
-      this.service.fetchSearched(q).subscribe(res => {
-       this.response = res;
-       debugger;
-        this.movies = res.Search;
-      });
+    this.service.searchTermChanged.subscribe(newTerm =>
+      this.onSearchTermChange(newTerm)
+    );
+    //  this.pageSize = this.pagination.pageSize;
+    this.setStateFromParams();
+  }
+
+  setStateFromParams() {
+    this.activatedRoute.params.subscribe(params => {
+      let page = params[pageParamName];
+      let searchTerm = params[searchTermParamName];
+
+      if (searchTerm) {
+        this.page = page ? page : 1;
+        this.searchTerm = searchTerm;
+        this.getMovies();
+      }
+    });
+  }
+
+  onSearchTermChange(newTerm: string) {
+    this.searchTerm = newTerm;
+    debugger;
+    this.getMovies();
+  }
+
+  onPaginationChange(newPage: number) {
+    this.page = newPage;
+    this.getMovies();
+  }
+
+  getMovies() {
+    this.service.fetchSearched(this.searchTerm, this.page).subscribe(res => {
+      this.response = res;
+      this.movies = res.Search;
+      this.totalItem = res.totalResults;
+      this.updateQueryParamsInUrl();   
+
+      // todo: call function to save state to local storage.
+      // window.localStorage.setItem()
+    });
+  }
+
+  private updateQueryParamsInUrl() {
+    const queryParams: Params = {
+      [searchTermParamName]: this.searchTerm,
+      [pageParamName]: String(this.page)
+    };
+
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: queryParams,
+      queryParamsHandling: "merge" // remove to replace all query params by provided
     });
   }
 

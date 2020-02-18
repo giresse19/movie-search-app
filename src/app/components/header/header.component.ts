@@ -1,23 +1,22 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 import { Router } from '@angular/router';
+import { MoviesService } from 'src/app/services';
 
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.css"]
 })
-
 export class HeaderComponent implements OnInit {
- 
+
   queryTerm: string;
-  constructor(private router: Router) { }
+  constructor( private movieService:MoviesService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  onSubmitHandler(event :any) {
+  onSubmitHandler(event: any) {
     event.preventDefault();
-    this.router.navigate(["/movies"], {queryParams : {q:this.queryTerm}});
+    debugger
+    this.movieService.searchTermChanged.next(this.queryTerm)
   }
-
 }

@@ -5,11 +5,10 @@
     </span>
 </div>
 <div class="row" *ngIf="response?.Response">    
-    <!-- <pagination 
-    [total-items]="totalItem" 
-    [page-size]="pageSize" 
-    (page-changed)="onPageChange($event)">
-    </pagination> -->
+    <pagination 
+    [total-items]="totalItem"
+    (page-changed)="onPaginationChange($event)">
+    </pagination>
         <div class="card border-0 col-md-4 col-sm-6 col-xs-12" *ngFor="let m of movies">
             <div class="app-clickable">
                 <div
