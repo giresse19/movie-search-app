@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MoviesService } from './movies.service';
 
 describe('MoviesService', () => {
   let service: MoviesService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ]
+    });
     service = TestBed.inject(MoviesService);
   });
 
@@ -14,3 +16,13 @@ describe('MoviesService', () => {
     expect(service).toBeTruthy();
   });
 });
+
+describe('MoviesService', ()=> {
+it('should escape unsafe characters', () => {
+pending()
+})
+
+it('should return poster', () => {
+  pending()
+})
+})
