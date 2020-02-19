@@ -31,7 +31,7 @@
   <div class="col-md-4"></div>
 </div>
 
-<div class="row" *ngIf="movies.length != 0">
+<div class="row" *ngIf="!response?.Error && movies.length != 0">
   <div
     class="card border-0 col-md-4 col-sm-6 col-xs-12"
     *ngFor="let m of movies"
@@ -52,7 +52,7 @@
   </div>
 </div>
 
-<div class="row" *ngIf="movies.length != 0">
+<div class="row" *ngIf="!response?.Error && movies.length != 0">
     <div class="col-md-4"></div>
     <div class=" text-warning notFound col-md-4">
       <pagination
