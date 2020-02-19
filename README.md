@@ -23,7 +23,7 @@ A great idea for a new movies collection application. This new site is based on 
   - Mobile first
   - Polished design.
   - Responsive design.
-  - Progressive Web App.
+  - Progressive Web App(access app in off-line etc.).
   - Browser Local Storage.
   - Pagination.
   - Consuming a real API.  
@@ -52,6 +52,7 @@ Navigation work as follows:
 - [Rxjs](https://github.com/ReactiveX/rxjs)
 - [bootstraps](https://github.com/twbs/bootstrap)
 - [jasmine](https://github.com/jasmine/jasmine)
+- [firebase](https://github.com/firebase/)
 
 
 #### Content
