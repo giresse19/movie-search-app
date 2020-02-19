@@ -29,10 +29,11 @@ A great idea for a new movies collection application. This new site is based on 
   - Consuming a real API.  
 
 - **Movies List**
-  - Welcome view before movie search.
+  - Welcome view.
+  - Movie search
   - Upon search : 
   - Paginated list of Movies if found.
-  - Shows different view if not found.
+  - 404  view if not found.
   - Clicking on a particular movie redirect you to the selected &#39;movie detail&#39; page.
 
 - **Movie detail**
