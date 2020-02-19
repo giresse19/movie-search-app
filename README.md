@@ -1,27 +1,95 @@
-# MovieApp
+# Search Movies Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
+This project was developed as a challenge.
+See the [Demo](https://ng8-search-movie-app.firebaseapp.com/movies) here.
 
-## Development server
+# Sumary
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- [Scenario](#scenario)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Content](#content)
+- [Prerequisites](#prerequisites)
+- [Installing, testing and running](#installing-testing-and-running)
+- [Author](#author)
 
-## Code scaffolding
+## Scenario:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+A great idea for a new movies collection application. This new site is based on angular application which it contain the below features:
 
-## Build
+### Features:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- **General**
+  - Mobile first
+  - Polished design.
+  - Responsive design.
+  - Progressive Web App.
+  - Browser Local Storage.
+  - Pagination.
+  - Consuming a real API.  
 
-## Running unit tests
+- **Movies List**
+  - Welcome view before movie search.
+  - Upon search : 
+  - Paginated list of Movies if found.
+  - Shows different view if not found.
+  - Clicking on a particular movie redirect you to the selected &#39;movie detail&#39; page.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Movie detail**
+  - Show selected movie detail information.
+  - Navigate back to &#39;movie list&#39;.
+  - Displays a back button for navigation.
 
-## Running end-to-end tests
+Navigation work as follows:
+  * using the back and forward button of the browser take to the correct page.
+  * reloading the current page work as expected.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+#### Technologies
 
-## Further help
+- [Angular](https://angular.io/)
+- [Angular CLI](https://cli.angular.io/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Rxjs](https://github.com/ReactiveX/rxjs)
+- [bootstraps](https://github.com/twbs/bootstrap)
+- [jasmine](https://github.com/jasmine/jasmine)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+#### Content
+
+[OMDb API](http://www.omdbapi.com/#top) was used as a database.
+
+### Prerequisites
+
+To run this project you need:
+
+[NodeJs](https://nodejs.org/en/download/)
+
+### Installing, testing and running
+
+Clone the project:
+
+```
+git clone https://github.com/giresse19/movie-search-app
+```
+
+Install the depedencies:
+
+```
+npm install
+```
+
+Run unit test:
+
+```
+ng test
+```
+
+Run the application:
+
+```
+npm start
+```
+
+## Author
+
+* **Giresse Ashu-Bob** - [Github](https://github.com/giresse19)
