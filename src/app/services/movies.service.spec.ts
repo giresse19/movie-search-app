@@ -41,7 +41,7 @@ describe("MoviesService", () => {
     expect(result4).toBe("&quot;");
     expect(result5).toBe("&#039;");
 
-    expect(loggerSpy.log).toHaveBeenCalledTimes(1);
+    expect(loggerSpy.log).toHaveBeenCalledTimes(5);
   });
 
   it("should return default poster", () => {

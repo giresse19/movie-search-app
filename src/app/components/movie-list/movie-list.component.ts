@@ -34,23 +34,6 @@ export class MovieListComponent implements OnInit {
     this.setStateFromParams();
   }
 
-  setStateFromParams() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      let page = params[pageParamName];
-      let searchTerm = params[searchTermParamName];
-      if (searchTerm) {
-        this.page = page ? page : 1;
-        this.searchTerm = searchTerm;
-        this.getMovies();
-      }
-    });
-  }
-
-  onSearchTermChange(newTerm: string) {
-    this.searchTerm = newTerm;
-    this.getMovies();
-  }
-
   onHeaderClick() {
     this.response = null;
     return (this.movies = []);
@@ -73,6 +56,10 @@ export class MovieListComponent implements OnInit {
     });
   }
 
+  posterImage(poster: string) {
+    return this.service.poster(poster);
+  }
+
   private updateQueryParamsInUrl() {
     const queryParams: Params = {
       [searchTermParamName]: this.searchTerm,
@@ -86,7 +73,20 @@ export class MovieListComponent implements OnInit {
     });
   }
 
-  posterImage(poster: string) {
-    return this.service.poster(poster);
+  private setStateFromParams() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      let page = params[pageParamName];
+      let searchTerm = params[searchTermParamName];
+      if (searchTerm) {
+        this.page = page ? page : 1;
+        this.searchTerm = searchTerm;
+        this.getMovies();
+      }
+    });
+  }
+
+  private onSearchTermChange(newTerm: string) {
+    this.searchTerm = newTerm;
+    this.getMovies();
   }
 }

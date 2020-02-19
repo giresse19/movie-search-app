@@ -20,7 +20,7 @@ export class PaginationComponent {
   currentPage: number = 1;
   show: boolean = false;
 
-  private onPageChanged() {
+  onPageChanged() {
     this.pageChanged.emit(this.currentPage);
   }
 
