@@ -57,7 +57,7 @@ Navigation work as follows:
 
 #### Content
 
-[OMDb API](http://www.omdbapi.com/#top) was used as a database.
+[OMDb API](http://www.omdbapi.com/#top) was used as a B.E, serving REStful API.
 
 ### Prerequisites
 
