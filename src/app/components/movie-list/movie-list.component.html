@@ -1,59 +1,66 @@
 <div class="row" *ngIf="response?.Error">
-    <div class="col-md-4"></div>
-    <div class=" text-warning notFound col-md-4">
-        <span>404! Page not found.<br>
-            No movie(s) found with the title entered, from our database.
-            Please try a different title.
-        </span>
-    </div>
-    <div class="col-md-4">           
-    </div>
+  <div class="col-md-4"></div>
+  <div class=" text-warning notFound col-md-4">
+    <span
+      >404! Page not found.<br />
+      No movie(s) found with the title entered, from our database. Please try a
+      different title.
+    </span>
+  </div>
+  <div class="col-md-4"></div>
 </div>
 
 <div class="row" *ngIf="movies?.length === 0">
+  <div class="col-md-4"></div>
+  <div class="text-search col-md-4">
+    <span>
+      Welcome to search movie App! <br />Search for movies by title to get the
+      collection of queried movies. Click on a searched movie to view the
+      details of that movie.
+    </span>
+    <span class="footerText">
+      <p>
+        Developed by
+        <a href="https://github.com/giresse19?tab=repositories"
+          >Giresse Ashu-Bob</a
+        >
+      </p>
+      <p>&copy; 02-2020 All rights reserve.</p>
+    </span>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+<div class="row" *ngIf="movies.length != 0">
+  <div
+    class="card border-0 col-md-4 col-sm-6 col-xs-12"
+    *ngFor="let m of movies"
+  >
+    <div class="app-clickable">
+      <div class="card-body" [routerLink]="['/movie-details', m.imdbID]">
+        <div
+          class="poster"
+          style.background-image="url({{ posterImage(m.Poster) }})"
+        ></div>
+        <h5 class="card-title">
+          {{ m.Title }}
+          <br />
+          ({{ m.Year }})
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="movies.length != 0">
     <div class="col-md-4"></div>
-    <div class="text-search col-md-4">
-      <span>
-        Welcome to search movie App! <br>Search for movies by title 
-        to get the collection of queried movies.
-        Click on a searched movie to 
-        view the details of that movie.
-    </span > 
-        <span class="footerText">
-          <p>Developed by <a href="https://github.com/giresse19?tab=repositories">Giresse Ashu-Bob</a></p>
-          <p>&copy; 02-2020 All rights reserve.</p>
-        </span>      
+    <div class=" text-warning notFound col-md-4">
+      <pagination
+       class="app-clickable"
+        [total-items]="totalItem"
+        (page-changed)="onPaginationChange($event)"
+      >
+      </pagination>
     </div>
-    <div class="col-md-4">           
-    </div>
-</div>
-
-<div class="row" *ngIf="response?.Response && movies.length != 0">   
-    <pagination 
-    [total-items]="totalItem"
-    (page-changed)="onPaginationChange($event)">
-    </pagination>
-        <div class="card border-0 col-md-4 col-sm-6 col-xs-12" *ngFor="let m of movies">
-
-            <div class="app-clickable">
-                <div
-                 class="card-body"
-                 [routerLink]="['/movie-details', m.imdbID]"
-                 >            
-                    <div 
-                    class="poster"
-                    style.background-image="url({{posterImage(m.Poster)}})" >
-                    </div>                  
-                    <h5 
-                    class="card-title"                     
-                    >{{ m.Title }}
-                    <br>
-                    ({{ m.Year }})
-                    </h5>              
-                </div>
-            </div>
-            </div>   
-</div>
-
-
-
+    <div class="col-md-4"></div>
+  </div>
