@@ -16,7 +16,8 @@ import {
 export class MoviesService {
   constructor(private http: HttpClient, private logger: LoggerService) {}
 
-  searchTermChanged = new Subject<string>(); 
+  searchTermChanged = new Subject<string>();   
+  headerClick = new Subject<string>();   
   
   fetchSearched(searchTerm: string, page: number): Observable<PagedMovies> {
     return this.http.get<PagedMovies>(`${environment.omdbapi.apiUrl}`, {

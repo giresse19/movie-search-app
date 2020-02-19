@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MoviesService } from "src/app/services/movies.service";
 import { ActivatedRoute, Params, Router } from "@angular/router";
-import { Movie, NotFound } from "../../services/models";
+import { Movie, PagedMovies } from "../../services/models";
 
 const searchTermParamName = "s";
 const pageParamName = "page";
@@ -11,10 +11,9 @@ const pageParamName = "page";
   templateUrl: "./movie-list.component.html",
   styleUrls: ["./movie-list.component.css"]
 })
-
 export class MovieListComponent implements OnInit {
   movies: Movie[] = [];
-  response: NotFound;
+  response: PagedMovies;
   page: number = 1;
   totalItem: number;
   searchTerm: string;
@@ -28,14 +27,17 @@ export class MovieListComponent implements OnInit {
   ngOnInit() {
     this.service.searchTermChanged.subscribe(newTerm =>
       this.onSearchTermChange(newTerm)
-    ); 
+    );
+    this.service.headerClick.subscribe(event => {
+      this.onHeaderClick();
+    });
     this.setStateFromParams();
   }
 
   setStateFromParams() {
     this.activatedRoute.queryParams.subscribe(params => {
       let page = params[pageParamName];
-      let searchTerm = params[searchTermParamName];         
+      let searchTerm = params[searchTermParamName];
       if (searchTerm) {
         this.page = page ? page : 1;
         this.searchTerm = searchTerm;
@@ -45,8 +47,13 @@ export class MovieListComponent implements OnInit {
   }
 
   onSearchTermChange(newTerm: string) {
-    this.searchTerm = newTerm;   
+    this.searchTerm = newTerm;
     this.getMovies();
+  }
+
+  onHeaderClick() {
+    this.response = null;
+    return (this.movies = []);
   }
 
   onPaginationChange(newPage: number) {
@@ -59,7 +66,7 @@ export class MovieListComponent implements OnInit {
       this.response = res;
       this.movies = res.Search;
       this.totalItem = res.totalResults;
-      this.updateQueryParamsInUrl();   
+      this.updateQueryParamsInUrl();
 
       // todo: call function to save state to local storage.
       // window.localStorage.setItem()
@@ -75,7 +82,7 @@ export class MovieListComponent implements OnInit {
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: queryParams,
-      queryParamsHandling: "merge" 
+      queryParamsHandling: "merge"
     });
   }
 

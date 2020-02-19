@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from "@angular/core";
-import { Router } from '@angular/router';
-import { MoviesService } from 'src/app/services';
+import { Router } from "@angular/router";
+import { MoviesService } from "src/app/services";
 
 @Component({
   selector: "app-header",
@@ -8,14 +8,17 @@ import { MoviesService } from 'src/app/services';
   styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
-
   queryTerm: string;
-  constructor( private movieService:MoviesService) {}
+  constructor(private service: MoviesService) {}
 
   ngOnInit(): void {}
 
   onSubmitHandler(event: any) {
-    event.preventDefault();   
-    this.movieService.searchTermChanged.next(this.queryTerm)
+    event.preventDefault();
+    this.service.searchTermChanged.next(this.queryTerm);
+  }
+
+  onHeaderClick(event: any) {
+    this.service.headerClick.next(event);
   }
 }
