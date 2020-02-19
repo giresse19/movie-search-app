@@ -45,14 +45,30 @@ export class MovieListComponent implements OnInit {
   }
 
   getMovies() {
+    let state: any = {
+      searchParams: this.searchTerm,
+      pageNumber: this.page
+    };
+
+    if (this.service.hasSearchResults(state)) {
+      let result = JSON.parse(
+        window.localStorage.getItem(
+          JSON.stringify(state)
+        )
+      );
+      this.response = result;
+      this.movies = result.Search;
+      this.totalItem = result.totalResults;   
+      this.updateQueryParamsInUrl();   
+      return;
+    }
+
     this.service.fetchSearched(this.searchTerm, this.page).subscribe(res => {
+      this.service.storeSearchResults(state, res)
       this.response = res;
       this.movies = res.Search;
       this.totalItem = res.totalResults;
-      this.updateQueryParamsInUrl();
-
-      // todo: call function to save state to local storage.
-      // window.localStorage.setItem()
+      this.updateQueryParamsInUrl();      
     });
   }
 
@@ -76,11 +92,11 @@ export class MovieListComponent implements OnInit {
   private setStateFromParams() {
     this.activatedRoute.queryParams.subscribe(params => {
       let page = params[pageParamName];
-      let searchTerm = params[searchTermParamName];     
+      let searchTerm = params[searchTermParamName];
       if (searchTerm) {
         this.page = page ? page : 1;
-        this.searchTerm = searchTerm;       
-       this.getMovies();
+        this.searchTerm = searchTerm;
+        this.getMovies();
       }
     });
   }

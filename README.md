@@ -44,6 +44,10 @@ A great idea for a new movies collection application. This new site is based on 
 Navigation work as follows:
   * using the back and forward button of the browser take to the correct page.
   * reloading the current page work as expected.
+  * Enter key  works well for both browser and mobile when submitting search query.
+  * Clicking submit button works as well.
+  
+
 
 #### Technologies
 

@@ -17,17 +17,36 @@ export class MovieDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getMovieDetails();
+  }
+
+  posterImage(poster: string) {
+    return this.service.poster(poster);
+  }
+
+  goBack() {
+    window.history.back();
+  }
+
+  private getMovieDetails() {
     this.activatedRoute.params.subscribe(params => {
       let id = params["imdbID"];
-      this.service.getMovieDetails(id).subscribe(res => (this.movie = res));
+      let state: any = {
+        imdbParams: id
+      };
+
+      if (this.service.hasSearchResults(state)) {
+        let result = JSON.parse(
+          window.localStorage.getItem(JSON.stringify(state))
+        );
+        this.movie = result;
+        return;
+      }
+
+      this.service.getMovieDetails(id).subscribe(res => {
+        this.service.storeSearchResults(state, res);
+        this.movie = res;
+      });
     });
-  }
-
-  posterImage(poster:string) {
-    return this.service.poster(poster)
-  }
-
-  goBack(){
-    window.history.back();
   }
 }
