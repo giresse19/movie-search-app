@@ -76,11 +76,11 @@ export class MovieListComponent implements OnInit {
   private setStateFromParams() {
     this.activatedRoute.queryParams.subscribe(params => {
       let page = params[pageParamName];
-      let searchTerm = params[searchTermParamName];
+      let searchTerm = params[searchTermParamName];     
       if (searchTerm) {
         this.page = page ? page : 1;
-        this.searchTerm = searchTerm;
-        this.getMovies();
+        this.searchTerm = searchTerm;       
+       this.getMovies();
       }
     });
   }

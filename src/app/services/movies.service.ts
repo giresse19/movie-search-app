@@ -3,6 +3,7 @@ import { Observable, Subject } from "rxjs";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import {LoggerService} from './logger.service';
+import {map} from "rxjs/operators";
 
 import {  
   PagedMovies,
@@ -18,14 +19,14 @@ export class MoviesService {
 
   searchTermChanged = new Subject<string>();   
   headerClick = new Subject<string>();   
-  
+
   fetchSearched(searchTerm: string, page: number): Observable<PagedMovies> {
     return this.http.get<PagedMovies>(`${environment.omdbapi.apiUrl}`, {
       params: new HttpParams()
         .set("apikey", environment.omdbapi.apiKey)
         .set("s", this.handleSpecialCharsHtml(searchTerm.trim()))
         .set("page", page.toString())
-    });
+    })
   }
 
   getMovieDetails(imdbID: string): Observable<MovieDetail> {

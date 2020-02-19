@@ -24,19 +24,4 @@ describe("PaginationComponent", () => {
   it("should create", () => {
     expect(component).toBeTruthy();
   });
-
-  it("should change page", () => {
-    //const result = component.changePage(page: number)
-    pending();
-  });
-
-  it("should get previous page", () => {
-    //const result = component.previous()
-    pending();
-  });
-
-  it("should get next page", () => {
-    //const result = component.next()
-    pending();
-  });
 });

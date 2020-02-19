@@ -1,34 +1,87 @@
 import { TestBed } from "@angular/core/testing";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from "@angular/common/http/testing";
 import { MoviesService } from "./movies.service";
-import {LoggerService} from './logger.service';
+import { LoggerService } from "./logger.service";
+import { res, details } from "../mocked-api-response/db-data";
+import { environment } from "src/environments/environment";
 
 describe("MoviesService", () => {
   let service: MoviesService;
+  let httpTestingController: HttpTestingController;
   let loggerSpy: any;
+  let imdbID: string;
 
   beforeEach(() => {
-    console.log("Calling beforeEach");
-
-    loggerSpy = jasmine.createSpyObj('LoggerService', ["log"]);
+    loggerSpy = jasmine.createSpyObj("LoggerService", ["log"]);
 
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
         MoviesService,
-        {provide: LoggerService, useValue: loggerSpy}
+        { provide: LoggerService, useValue: loggerSpy }
       ]
     });
+
     service = TestBed.inject(MoviesService);
+    httpTestingController = TestBed.get(HttpTestingController);
   });
 
   it("should be created", () => {
     expect(service).toBeTruthy();
   });
 
-  it("should escape unsafe character", () => {
-    console.log("unsafe character test");
+  it("should fetch searched movies", () => {
+    service.fetchSearched("spider", 1).subscribe(res => {
+      
+      expect(res).toBeTruthy('No Movies returned');    
+      expect(res.Search.length).toBe(10, "incorrect number of Movies");
 
+      const movie = res.Search.find(movie => movie.Title);
+      expect(movie.Title).toContain("Spider");
+      imdbID = movie.imdbID;
+    });
+
+    const req = httpTestingController.expectOne(
+      req => req.url == `${environment.omdbapi.apiUrl}`
+    );
+
+    expect(req.request.method).toEqual("GET");
+    expect(req.request.params.get("apikey")).toEqual("699cc594");
+    expect(req.request.params.get("s")).toEqual("spider");
+    expect(req.request.params.get("page")).toEqual("1");
+
+    req.flush({
+      ...res
+    });
+  });
+
+  it("should get a movie details", () => {
+
+    service.getMovieDetails(imdbID)
+    .subscribe(() => {
+      expect(details).toBeTruthy('No Movie detail returned');    
+      expect(details.Title).toContain("Spider");
+      expect(details.Type).toContain("movie");
+    })   
+
+    const req = httpTestingController.expectOne(
+      req => req.url == `${environment.omdbapi.apiUrl}`
+    );
+
+    expect(req.request.method).toEqual("GET");
+    expect(req.request.params.get("apikey")).toEqual("699cc594");
+    expect(req.request.params.get("i")).toEqual(imdbID);
+
+    req.flush({
+      ...details
+    });
+  
+  });
+
+  it("should escape unsafe character", () => {
     const result1 = service.handleSpecialCharsHtml("&");
     const result2 = service.handleSpecialCharsHtml("<");
     const result3 = service.handleSpecialCharsHtml(">");
@@ -45,12 +98,10 @@ describe("MoviesService", () => {
   });
 
   it("should return default poster", () => {
-    console.log("default poster test");
-
     const poster = service.poster("N/A");
     expect(poster).toBe(
       "https://www.prokerala.com/movies/assets/img/no-poster-available.jpg"
-    );    
+    );
     expect(loggerSpy.log).toHaveBeenCalledTimes(1);
   });
 });
