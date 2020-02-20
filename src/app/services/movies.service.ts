@@ -40,12 +40,7 @@ export class MoviesService {
     } else {
       return poster;
     }
-  }
-
-  defaultOfflinePoster(movie: any) {
-    return (movie.Poster =
-      "https://www.prokerala.com/movies/assets/img/no-poster-available.jpg");
-  }
+  }  
 
   // keeps new search results to local storage
   storeSearchResults(state: any, data: any) {

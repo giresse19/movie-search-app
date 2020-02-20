@@ -1,68 +1,65 @@
 <div *ngIf="!movie" class="text-center">
     <img 
-    src="https://gifimage.net/wp-content/uploads/2018/11/loader-small-gif-2.gif"    
-     alt="loading..."
-     >    
+    src="https://gifimage.net/wp-content/uploads/2018/11/loader-small-gif-2.gif"
+     alt="loading...">
 </div>
-<div class="row" > 
-    <div *ngIf="movie">
-        <div 
+<div class="row" *ngIf="movie">    
+    <div 
         class="col-md-4 poster"
         style.background-image="url({{posterImage(movie.Poster)}})"
          >        
     </div>
     <div class="col-md-8">
         <h3 
-        class="card-title app-clickable" 
+        class="card-title" 
         >
             {{ movie.Title }}
         </h3> 
         <table class="table">
             <tbody>
-                <tr>
-                    <td>Year</td>
-                    <td>{{ movie.Year}}</td>
-                </tr>
-                <tr>
-                    <td>Type</td>
-                    <td>{{ movie.Type}}</td>
-                </tr>
-                <tr>
-                    <td>Poster</td>
-                    <td>{{ movie.Poster}}</td>
-                </tr>
-                <tr>
-                    <td>Plot</td>
-                    <td>{{ movie.Plot}}</td>
-                </tr>
-                <tr>
-                    <td>imdbRating</td>
-                    <td>{{ movie.imdbRating}}</td>
-                </tr>
-                <tr>
-                    <td>Runtime</td>
-                    <td>{{ movie.Runtime}}</td>
-                </tr>
-                <tr>
-                    <td>Genre</td>
-                    <td>{{ movie.Genre}}</td>
-                </tr>
-                <tr>
-                    <td>Country</td>
-                    <td>{{ movie.Country}}</td>
-                </tr>  
-                <tr>
-                    <td>Language</td>
-                    <td>{{ movie.Language}}</td>
-                </tr>
+              <tr>
+                <td>Year</td>
+                <td>{{ movie.Year }}</td>
+              </tr>
+              <tr>
+                <td>Type</td>
+                <td>{{ movie.Type }}</td>
+              </tr>
+              <tr>
+                <td>Poster</td>
+                <td>{{ movie.Poster }}</td>
+              </tr>
+              <tr>
+                <td>Plot</td>
+                <td>{{ movie.Plot }}</td>
+              </tr>
+              <tr>
+                <td>imdbRating</td>
+                <td>{{ movie.imdbRating }}</td>
+              </tr>
+              <tr>
+                <td>Runtime</td>
+                <td>{{ movie.Runtime }}</td>
+              </tr>
+              <tr>
+                <td>Genre</td>
+                <td>{{ movie.Genre }}</td>
+              </tr>
+              <tr>
+                <td>Country</td>
+                <td>{{ movie.Country }}</td>
+              </tr>
+              <tr>
+                <td>Language</td>
+                <td>{{ movie.Language }}</td>
+              </tr>
             </tbody>
-        </table>
+          </table>
+        <div class="col-md-1">
+            <button (click)="goBack()"      
+            class="btn btn-primary">
+             Back
+            </button>
+        </div>
     </div>
-    <div class="col-md-1">
-        <button (click)="goBack()"      
-        class="btn btn-primary backButton">
-         Back
-        </button>
-    </div>
-</div>
-</div>
+</div> 
