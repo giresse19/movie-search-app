@@ -1,24 +1,27 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-} from "@angular/core";
+import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
+
+import { ActivatedRoute } from "@angular/router";
 
 const pageSize = 10;
+const pageParamName = "page";
 
 @Component({
   selector: "pagination",
   templateUrl: "./pagination.component.html",
   styleUrls: ["./pagination.component.css"]
 })
-export class PaginationComponent {
+export class PaginationComponent implements OnInit {
   @Input("total-items") totalItems: number;
   @Output("page-changed") pageChanged = new EventEmitter();
 
-  constructor() {}
-  currentPage: number = 1;
-  show: boolean = false;
+  currentPage: number;
+  constructor(private activatedRoute: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.currentPage = params[pageParamName];
+    });
+  }
 
   onPageChanged() {
     this.pageChanged.emit(this.currentPage);
@@ -40,7 +43,7 @@ export class PaginationComponent {
     this.currentPage++;
     this.onPageChanged();
   }
-   get lastPage() {
+  get lastPage() {
     return Math.ceil(this.totalItems / pageSize);
   }
 }
