@@ -14,7 +14,6 @@ export class MoviesService {
   movies: Movie[] = [];
 
   searchTermChanged = new Subject<string>();
-  headerClick = new Subject<string>();
 
   fetchSearched(searchTerm: string, page: number): Observable<PagedMovies> {
     return this.http.get<PagedMovies>(`${environment.omdbapi.apiUrl}`, {

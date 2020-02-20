@@ -1,0 +1,6 @@
+.logo{
+    cursor: pointer;
+}
+.logo:hover{
+    text-decoration: none;    
+}

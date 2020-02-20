@@ -7,12 +7,9 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "movies"
-  },
-  {
-    path: "movies",
     component: MovieListComponent
   },
+
   {
     path: "movie-details/:imdbID",
     component: MovieDetailsComponent

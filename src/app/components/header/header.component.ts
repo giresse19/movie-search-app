@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { MoviesService } from "src/app/services";
 
 @Component({
@@ -9,7 +9,7 @@ import { MoviesService } from "src/app/services";
 })
 export class HeaderComponent implements OnInit {
   queryTerm: string;
-  constructor(private service: MoviesService) {}
+  constructor(private route: Router, private service: MoviesService) {}
 
   ngOnInit(): void {}
 
@@ -18,7 +18,4 @@ export class HeaderComponent implements OnInit {
     this.service.searchTermChanged.next(this.queryTerm);
   }
 
-  onHeaderClick(event: any) {
-    this.service.headerClick.next(event);
-  }
 }
