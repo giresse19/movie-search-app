@@ -1,8 +1,21 @@
-<div *ngIf="!movie" class="text-center">
+<div *ngIf="!movie && detectConnectionStatus()" class="text-center">  
     <img 
     src="https://gifimage.net/wp-content/uploads/2018/11/loader-small-gif-2.gif"
-     alt="loading...">
+     alt="loading...">  
 </div>
+
+<div class="row" *ngIf="!movie && !detectConnectionStatus()">  
+  <div class="col-md-4"></div>
+  <div class="text-warning notFound col-md-4">
+    <span>
+      You are currently offline. Inorder to view a movie detail without
+      internet connection, you must to have previously visited that movie detail in online mode.
+      Please reconnect and try again!
+    </span>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
 <div class="row" *ngIf="movie">    
     <div 
         class="col-md-4 poster"

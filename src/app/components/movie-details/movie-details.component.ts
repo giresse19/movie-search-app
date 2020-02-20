@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MoviesService } from "src/app/services/movies.service";
 import { ActivatedRoute } from "@angular/router";
-import { MovieDetail, NotFound } from "../../services/models";
+import { MovieDetail } from "../../services/models";
 
 @Component({
   selector: "app-movie-details",
@@ -26,6 +26,16 @@ export class MovieDetailsComponent implements OnInit {
 
   goBack() {
     window.history.back();
+  }
+
+  detectConnectionStatus() {
+    window.addEventListener("online", updateOnlineStatus);
+    window.addEventListener("offline", updateOnlineStatus);
+
+    function updateOnlineStatus(event) {
+       return navigator.onLine;    
+    }
+    
   }
 
   private getMovieDetails() {

@@ -21,3 +21,17 @@
 .button-search{
     margin-top: 5px;
 }
+.notFound{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    
+}
+.notFound>span{
+vertical-align: middle;
+line-height: normal;
+font-size: larger;
+font-weight: bold
+    
+}
