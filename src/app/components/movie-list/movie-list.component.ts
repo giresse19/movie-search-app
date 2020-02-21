@@ -25,11 +25,10 @@ export class MovieListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.service.searchTermChanged.subscribe(newTerm =>
-      this.onSearchTermChange(newTerm)
-    );
-    this.service.headerClick.subscribe(event => {
-      this.onHeaderClick();
+    
+    this.service.searchTermChanged.subscribe(newTerm => {
+      
+      this.onSearchTermChange(newTerm);
     });
     this.setStateFromParams();
   }
@@ -52,23 +51,21 @@ export class MovieListComponent implements OnInit {
 
     if (this.service.hasSearchResults(state)) {
       let result = JSON.parse(
-        window.localStorage.getItem(
-          JSON.stringify(state)
-        )
+        window.localStorage.getItem(JSON.stringify(state))
       );
       this.response = result;
       this.movies = result.Search;
-      this.totalItem = result.totalResults;   
-      this.updateQueryParamsInUrl();   
+      this.totalItem = result.totalResults;
+      this.updateQueryParamsInUrl();
       return;
     }
 
     this.service.fetchSearched(this.searchTerm, this.page).subscribe(res => {
-      this.service.storeSearchResults(state, res)
+      this.service.storeSearchResults(state, res);
       this.response = res;
       this.movies = res.Search;
       this.totalItem = res.totalResults;
-      this.updateQueryParamsInUrl();      
+      this.updateQueryParamsInUrl();
     });
   }
 
@@ -90,19 +87,22 @@ export class MovieListComponent implements OnInit {
   }
 
   private setStateFromParams() {
+   
     this.activatedRoute.queryParams.subscribe(params => {
       let page = params[pageParamName];
-      let searchTerm = params[searchTermParamName];     
+      let searchTerm = params[searchTermParamName];
+
       if (searchTerm) {
         this.page = page ? page : 1;
         this.searchTerm = searchTerm;
         this.getMovies();
       }
-    });
+       
+    })
   }
 
   private onSearchTermChange(newTerm: string) {
-    this.searchTerm = newTerm;
+    this.searchTerm = newTerm;    
     this.getMovies();
   }
 }
