@@ -4,24 +4,19 @@ import {
   HttpTestingController
 } from "@angular/common/http/testing";
 import { MoviesService } from "./movies.service";
-import { LoggerService } from "./logger.service";
 import { res, details } from "../mocked-api-response/db-data";
 import { environment } from "src/environments/environment";
 
 describe("MoviesService", () => {
   let service: MoviesService;
-  let httpTestingController: HttpTestingController;
-  let loggerSpy: any;
+  let httpTestingController: HttpTestingController;  
   let imdbID: string;
 
   beforeEach(() => {
-    loggerSpy = jasmine.createSpyObj("LoggerService", ["log"]);
-
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        MoviesService,
-        { provide: LoggerService, useValue: loggerSpy }
+        MoviesService,        
       ]
     });
 
@@ -93,15 +88,13 @@ describe("MoviesService", () => {
     expect(result3).toBe("&gt;");
     expect(result4).toBe("&quot;");
     expect(result5).toBe("&#039;");
-
-    expect(loggerSpy.log).toHaveBeenCalledTimes(5);
+   
   });
 
   it("should return default poster", () => {
     const poster = service.poster("N/A");
     expect(poster).toBe(
       "https://www.prokerala.com/movies/assets/img/no-poster-available.jpg"
-    );
-    expect(loggerSpy.log).toHaveBeenCalledTimes(1);
+    );    
   });
 });
