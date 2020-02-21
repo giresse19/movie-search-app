@@ -7,14 +7,9 @@
 .poster {
     border-radius: 15px 15px 0 0;
     background-position: center;
-    background-size: cover;
-    height: 500px;
+    background-size: cover; 
 }
-.card-title{
-    padding: 10px;
-    margin-top: 10px;
-    font-weight: bold;
-}
+
 .developer{       
     bottom: 0;
 }

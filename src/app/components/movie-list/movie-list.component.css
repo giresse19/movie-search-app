@@ -1,24 +1,39 @@
 .card-body {
-    padding: 0px;
-    border: 1px solid gray;
-    margin-bottom: 2em;
-    border-radius: 15px;
+  padding: 0px;
+  border: 1px solid gray;
+  margin-bottom: 2em;
+  border-radius: 15px;
 }
-.text-search{      
-    line-height: 450px;
-    text-align: center;        
-}
-
-.text-search>span {
-display: inline-block;
-vertical-align: middle;
-line-height: normal;
-color: slategrey;
-font-size: larger;
-font-weight: bold; 
+.text-search {
+  line-height: 450px;
+  text-align: center;
 }
 
-.footerText{       
-    bottom: 0;
+.text-search > span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  color: slategrey;
+  font-size: larger;
+  font-weight: bold;
 }
 
+.footerText {
+  bottom: 0;
+}
+
+.movie-poster {
+    height: 300px;
+  }
+@media (min-width: 576px) {
+  .movie-poster {
+    height: 400px;
+  }
+}
+
+.card-title{
+    padding: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+    min-height: 80px;
+}

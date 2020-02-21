@@ -33,13 +33,13 @@
 
 <div class="row" *ngIf="!response?.Error && movies.length != 0">
   <div
-    class="card border-0 col-md-4 col-sm-6 col-xs-12"
+    class="card border-0 col-md-3 col-6"
     *ngFor="let m of movies"
   >
     <div class="app-clickable">
       <div class="card-body" [routerLink]="['/movie-details', m.imdbID]">
         <div
-          class="poster"
+          class="movie-poster poster"
           style.background-image="url({{ posterImage(m.Poster) }})"
         ></div>
         <h5 class="card-title">
@@ -49,6 +49,7 @@
         </h5>
       </div>
     </div>
+
   </div>
 </div>
 
