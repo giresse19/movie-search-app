@@ -1,7 +1,7 @@
 # Search Movies Application
 
 This project was developed as a challenge.
-See the [Demo](https://ng8-search-movie-app.firebaseapp.com/movies) here.
+See the [Demo](https://ng8-search-movie-app.firebaseapp.com/) here.
 
 # Sumary
 
