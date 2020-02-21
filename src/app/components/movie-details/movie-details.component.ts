@@ -10,6 +10,7 @@ import { MovieDetail } from "../../services/models";
 })
 export class MovieDetailsComponent implements OnInit {
   movie: MovieDetail;
+  isOnlineCheck: boolean = false;
 
   constructor(
     private service: MoviesService,
@@ -18,6 +19,8 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getMovieDetails();
+    window.addEventListener("online", this.updateOnlineStatus);
+    window.addEventListener("offline", this.updateOnlineStatus);
   }
 
   posterImage(poster: string) {
@@ -28,15 +31,16 @@ export class MovieDetailsComponent implements OnInit {
     window.history.back();
   }
 
-  detectConnectionStatus() {
-    window.addEventListener("online", updateOnlineStatus);
-    window.addEventListener("offline", updateOnlineStatus);
 
-    function updateOnlineStatus(event) {
-       return navigator.onLine;    
+    updateOnlineStatus(event) {
+  
+     return navigator.onLine
+       
     }
     
-  }
+get isOnline() {
+return navigator.onLine
+}
 
   private getMovieDetails() {
     this.activatedRoute.params.subscribe(params => {

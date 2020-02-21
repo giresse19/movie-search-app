@@ -1,10 +1,10 @@
-<div *ngIf="!movie && detectConnectionStatus()" class="text-center">  
+<div *ngIf="!movie && isOnline" class="text-center">  
     <img 
     src="https://gifimage.net/wp-content/uploads/2018/11/loader-small-gif-2.gif"
      alt="loading...">  
 </div>
 
-<!-- <div class="row" *ngIf="!movie && !detectConnectionStatus()">  
+<div class="row" *ngIf="!movie && !isOnline">  
   <div class="col-md-4"></div>
   <div class="text-warning notFound col-md-4">
     <span>
@@ -14,7 +14,7 @@
     </span>
   </div>
   <div class="col-md-4"></div>
-</div> -->
+</div>
 
 <div class="row" *ngIf="movie">    
     <div 
@@ -40,7 +40,9 @@
               </tr>
               <tr>
                 <td>Poster</td>
-                <td>{{ movie.Poster }}</td>
+                <td style="word-break:break-all">
+                  {{ movie.Poster }}
+                </td>
               </tr>
               <tr>
                 <td>Plot</td>
@@ -68,7 +70,7 @@
               </tr>
             </tbody>
           </table>
-        <div class="col-md-1">
+        <div class="col-md-1 back-button">
             <button (click)="goBack()"      
             class="btn btn-primary">
              Back
