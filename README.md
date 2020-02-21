@@ -24,7 +24,7 @@ A great idea for a new movies collection application. This new site is based on 
   - Polished design.
   - Responsive design.
   - Progressive Web App(access app in off-line etc.).
-  - Browser Local Storage.
+  - Local Storage.
   - Pagination.
   - Consuming a real API.  
 
@@ -34,7 +34,7 @@ A great idea for a new movies collection application. This new site is based on 
   - Upon search : 
   - Paginated list of Movies if found.
   - 404  view if not found.
-  - Possible to access movie list in off-line mode if that particular key has been previously searched in online mode.
+  - Possible to access movie list in off-line mode if that particular movie title has been previously searched for  while user was online.
   - Clicking on a particular movie redirect you to the selected &#39;movie detail&#39; page.
 
 - **Movie detail**
