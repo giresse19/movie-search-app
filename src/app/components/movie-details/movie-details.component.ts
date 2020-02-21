@@ -19,8 +19,6 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getMovieDetails();
-    window.addEventListener("online", this.updateOnlineStatus);
-    window.addEventListener("offline", this.updateOnlineStatus);
   }
 
   posterImage(poster: string) {
@@ -30,17 +28,6 @@ export class MovieDetailsComponent implements OnInit {
   goBack() {
     window.history.back();
   }
-
-
-    updateOnlineStatus(event) {
-  
-     return navigator.onLine
-       
-    }
-    
-get isOnline() {
-return navigator.onLine
-}
 
   private getMovieDetails() {
     this.activatedRoute.params.subscribe(params => {

@@ -26,8 +26,3 @@ export interface Movie {
     Language: string;   
     imdbID: string;
   }
-
-  export interface NotFound {
-    Response: boolean;
-    Error: string;
-  }

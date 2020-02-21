@@ -34,12 +34,14 @@ A great idea for a new movies collection application. This new site is based on 
   - Upon search : 
   - Paginated list of Movies if found.
   - 404  view if not found.
+  - Possible to access movie list in off-line mode if that particular key has been previously searched in online mode.
   - Clicking on a particular movie redirect you to the selected &#39;movie detail&#39; page.
 
 - **Movie detail**
   - Show selected movie detail information.
   - Navigate back to &#39;movie list&#39;.
   - Displays a back button for navigation.
+  - Possible to access movie details in off-line mode if that particular movie has been previously accessed in online mode.
 
 Navigation work as follows:
   * using the back and forward button of the browser take to the correct page.

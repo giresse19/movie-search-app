@@ -25,9 +25,7 @@ export class MovieListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    
     this.service.searchTermChanged.subscribe(newTerm => {
-      
       this.onSearchTermChange(newTerm);
     });
     this.setStateFromParams();
@@ -87,7 +85,6 @@ export class MovieListComponent implements OnInit {
   }
 
   private setStateFromParams() {
-   
     this.activatedRoute.queryParams.subscribe(params => {
       let page = params[pageParamName];
       let searchTerm = params[searchTermParamName];
@@ -97,12 +94,11 @@ export class MovieListComponent implements OnInit {
         this.searchTerm = searchTerm;
         this.getMovies();
       }
-       
-    })
+    });
   }
 
   private onSearchTermChange(newTerm: string) {
-    this.searchTerm = newTerm;    
+    this.searchTerm = newTerm;
     this.getMovies();
   }
 }
