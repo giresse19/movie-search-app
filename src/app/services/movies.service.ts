@@ -4,14 +4,13 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 
 
-import { PagedMovies, MovieDetail, Movie } from "./models";
+import { PagedMovies, MovieDetail } from "./models";
 
 @Injectable({
   providedIn: "root"
 })
 export class MoviesService {
   constructor(private http: HttpClient) {}
-  movies: Movie[] = [];
 
   searchTermChanged = new Subject<string>();
 

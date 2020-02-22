@@ -31,11 +31,6 @@ export class MovieListComponent implements OnInit {
     this.setStateFromParams();
   }
 
-  onHeaderClick() {
-    this.response = null;
-    return (this.movies = []);
-  }
-
   onPaginationChange(newPage: number) {
     this.page = newPage;
     this.getMovies();
@@ -84,7 +79,7 @@ export class MovieListComponent implements OnInit {
     });
   }
 
-  private setStateFromParams() {
+  private setStateFromParams() {    
     this.activatedRoute.queryParams.subscribe(params => {
       let page = params[pageParamName];
       let searchTerm = params[searchTermParamName];
