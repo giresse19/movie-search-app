@@ -10,7 +10,6 @@ import { MovieDetail } from "../../services/models";
 })
 export class MovieDetailsComponent implements OnInit {
   movie: MovieDetail;
-  isOnlineCheck: boolean = false;
 
   constructor(
     private service: MoviesService,

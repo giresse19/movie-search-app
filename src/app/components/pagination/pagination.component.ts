@@ -24,6 +24,8 @@ export class PaginationComponent implements OnInit {
   }
 
   onPageChanged() {
+    console.log(this.lastPage)
+    console.log(this.currentPage)
     this.pageChanged.emit(this.currentPage);
   }
 
@@ -44,6 +46,7 @@ export class PaginationComponent implements OnInit {
     this.onPageChanged();
   }
   get lastPage() {
+    
     return Math.ceil(this.totalItems / pageSize);
   }
 }
