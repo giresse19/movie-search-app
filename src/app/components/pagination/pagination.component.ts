@@ -24,8 +24,6 @@ export class PaginationComponent implements OnInit {
   }
 
   onPageChanged() {
-    console.log(this.lastPage)
-    console.log(this.currentPage)
     this.pageChanged.emit(this.currentPage);
   }
 
